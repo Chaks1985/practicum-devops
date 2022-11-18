@@ -1,0 +1,14 @@
+#!/bin/bash
+
+###################################################################
+#Script Name    : mail.yml
+#Description    : This ansible roles script will configure/install
+#                 required packages and start the app
+#Args           : NA
+#Author         : Chakravarthi Thangavelu
+#Email          : chakratechgeek@outlook.com
+###################################################################
+---
+- hosts: test
+  roles:
+    - RoRAPI_Reactjs

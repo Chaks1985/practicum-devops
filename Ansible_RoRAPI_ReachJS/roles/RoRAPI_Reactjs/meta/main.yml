@@ -1,0 +1,8 @@
+galaxy_info:
+  author: Chakravarthi Thangavelu
+  description: This ansible is to configure the ReachJS and RoRAPI
+  company: Assessment
+
+  license: license (GPL-2.0-or-later, MIT, etc)
+
+  min_ansible_version: 2.1

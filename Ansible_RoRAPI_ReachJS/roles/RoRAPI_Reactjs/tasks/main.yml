@@ -1,0 +1,45 @@
+---
+# tasks file for RoRAPI_Reactjs
+- name: "Installing Nodejs"
+  #shell: "yum install nodejs -y"
+  yum:
+    name: node
+    state: present
+  when: ansible_os_family == 'RedHat'
+  ignore_errors: true
+
+- name: "install postgressi"
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - postgresql
+    - postgresql-server
+    - ruby
+    - npm
+  ignore_errors: yes
+
+- name: "Initialize postgres db"
+  shell: "postgresql-setup initdb"
+  when: not postgres_data.stat.exists
+  ignore_errors: yes
+
+- name: "Start and enable services"
+  service:
+    name: "{{ item }}"
+    state: start
+    enabled: yes
+    with_items:
+      - postgresql
+
+#create directory and move data
+- name: "Create project dir"
+  shell: "mkdir /root/reactjs_rorapi;cd /root/reactjs_rorapi"
+
+- name: "Copy files to server and start the app"
+  copy:
+    src: /etc/ansible/roles/RoRAPI_Reactjs/templates/practicum-devops
+    dest: /root/reactjs_rorapi
+
+- name: "start the app"
+  shell: "npm i"
