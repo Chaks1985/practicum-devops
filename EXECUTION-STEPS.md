@@ -1,5 +1,5 @@
 Note: Please find runbook uploaded in this
-
+<< executing this shell RorAPI_ReachJS.sh will sequentially deploy the application in AWS >>
 Step1: Create docket image 
 
 Step2: Create IaC in terraform to deploy highly available resources in AWS
